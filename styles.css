@@ -127,7 +127,7 @@ body {
 }
 
 .quiz_box header {
-   height: 60px;
+   height: 80px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -156,6 +156,14 @@ body {
    padding: 2px 12px;
    font-weight: 500;
    border-radius: 5px;
+}
+
+.quiz_box header .time_line {
+   position: absolute;
+   left: 0px;
+   bottom: 409px;
+   background: #007af7;
+   height: 3px;
 }
 
 .quiz_box section {
@@ -226,6 +234,10 @@ section .option_list .option.incorrect{
     border: 1px solid #f5c6cb;
 }
 
+.option_list .option.disabled {
+   pointer-events: none;
+}
+
 
 .quiz_box footer {
    height: 60px;
@@ -250,6 +262,7 @@ section .option_list .option.incorrect{
    background-color: #007af7;
    border: none;
    color: #fff;
+   display: none;
 }
 
 .quiz_box footer button:hover {
