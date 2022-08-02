@@ -80,7 +80,7 @@ function showQuestions(index) {
        + '<div class="option"><span>' + questions[index].options[1] + "</span></div>"
        + '<div class="option"><span>' + questions[index].options[2] + "</span></div>"
        + '<div class="option"><span>' + questions[index].options[3] + "</span></div>";
-       // que_text.innerHTML = que_tag;
+       
    que_text.innerHTML = que_tag;
    option_list.innerHTML = option_tag;
     
