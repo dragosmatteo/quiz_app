@@ -77,9 +77,9 @@ function showQuestions(index) {
    const que_tag ="<span>" + questions[index].numb + ". " + questions[index].question + "</span>";
    let option_tag =
          '<div class="option"><span>' + questions[index].options[0] + "</span></div>"
-       + '<div class="option"><span>' + questions[index].options[1] + " </span></div>"
-       + '<div class="option"><span>' + questions[index].options[2] + " </span></div>"
-       + '<div class="option"><span>' + questions[index].options[3] + " </span></div>";
+       + '<div class="option"><span>' + questions[index].options[1] + "</span></div>"
+       + '<div class="option"><span>' + questions[index].options[2] + "</span></div>"
+       + '<div class="option"><span>' + questions[index].options[3] + "</span></div>";
    que_text.innerHTML = que_tag;
 
    que_text.innerHTML = que_tag;
