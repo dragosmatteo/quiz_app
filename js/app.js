@@ -45,8 +45,9 @@ continueBtn.onclick = () => {
 };
 
 let que_count = 0;
-let que_numb = 1;
+let que_num = 1;
 let counter;
+let counterLine;
 let numberValue = 15;
 let widthValue = 0;
 let userScore = 0;
@@ -56,9 +57,9 @@ const nextBtn = document.querySelector(".next_btn");
 nextBtn.onclick = () => {
    if (que_count < questions.length - 1) {
       que_count++;
-      que_numb++;
+      que_num++;
       showQuestions(que_count);
-      queCounter(que_numb);
+      queCounter(que_num);
       clearInterval(counter);
       startTimer(numberValue);
       clearInterval(counterLine);
@@ -74,13 +75,12 @@ nextBtn.onclick = () => {
 function showQuestions(index) {
    const que_text = document.querySelector(".que_text");
    
-   const que_tag ="<span>" + questions[index].numb + ". " + questions[index].question + "</span>";
-   let option_tag =
-         '<div class="option"><span>' + questions[index].options[0] + "</span></div>"
-       + '<div class="option"><span>' + questions[index].options[1] + "</span></div>"
-       + '<div class="option"><span>' + questions[index].options[2] + "</span></div>"
-       + '<div class="option"><span>' + questions[index].options[3] + "</span></div>";
-       
+   const que_tag =`<span> ${questions[index].numb}. ${questions[index].question}</span>`;
+   let option_tag = questions[index].options.map(
+      (option) =>
+         `<div class="option"><span>${option}</span></div>`
+   ).join('')
+
    que_text.innerHTML = que_tag;
    option_list.innerHTML = option_tag;
     
@@ -92,7 +92,6 @@ function showQuestions(index) {
 
 let tickIcon = '<div class="icon tick"><i class="fa fa-check"></i></div>'
 let crossIcon ='<div class="icon cross"><i class="fa fa-times"></i></div>'
-
 function optionSelected(answer) {
    clearInterval(counter);
    clearInterval(counterLine);
@@ -152,11 +151,8 @@ function startTimeLine(time) {
    }
 }
 
-function queCounter(index) {
-   const bottom_counter = document.querySelector(".total_que");
-   let bottom_tag = "<p><span>" + index + "</span> of <span>" + questions.length + "</span> Questions</p>";
-
-   bottom_counter.innerHTML = bottom_tag;
+function queCounter(que_num) {
+  document.querySelector(".total_que").innerHTML = `<p><span> ${que_num} </span> of <span> ${questions.length} </span> Questions</p>`;
 }
 
 function showResults() {
@@ -165,14 +161,11 @@ function showResults() {
    rulesBox.classList.remove("activeInfo");
    const score = document.querySelector(".score");
 
+   let scoreTag =`and sorry...😭 You got only <span>${userScore}</span> out of <span>${questions.length}</span>`
    if (userScore > 3) {
-      let scoreTag = 'and congrats 🚀 You got only <span>' + userScore + '</span> out of <span>' + questions.length + '</span>'
-      score.innerHTML = scoreTag;
+      scoreTag = `and congrats 🚀 You got only <span>${userScore}</span> out of <span>${questions.length}</span>`
    } else if (userScore > 1) {
-      let scoreTag = 'and nice 🥂 You got only <span>' + userScore + '</span> out of <span>' + questions.length + '</span>'
-      score.innerHTML = scoreTag;
-   } else{
-      let scoreTag = 'and sorry...😭 You got only <span>' + userScore + '</span> out of <span>' + questions.length + '</span>'
-      score.innerHTML = scoreTag;
-   }
+      scoreTag = `and nice 🥂 You got only <span>${userScore}</span> out of <span>${questions.length}</span>`
+   } 
+   score.innerHTML = scoreTag;
 }
